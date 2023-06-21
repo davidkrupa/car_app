@@ -25,7 +25,7 @@ const SearchManufacturer = ({
 
   return (
     <div className="search-manufacturer">
-      <Combobox>
+      <Combobox value={manufacturer} onChange={setManufacturer}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
@@ -69,7 +69,17 @@ const SearchManufacturer = ({
                     }
                     value={item}
                   >
-                    {item}
+                    {({ selected, active }) => (
+                      <li
+                        className={`${
+                          active
+                            ? "bg-blue-500 text-white"
+                            : "bg-white text-black"
+                        }`}
+                      >
+                        {item}
+                      </li>
+                    )}
                   </Combobox.Option>
                 ))
               )}
