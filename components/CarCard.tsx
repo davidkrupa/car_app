@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { CarProps } from "@/types";
 import CustomButton from "./CustomButton";
-import { calculateCarRent } from "@/utils";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 import CarDetails from "./CarDetails";
 
 interface CarCardProps {
@@ -18,6 +18,8 @@ const CarCard = ({ car }: CarCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const carRent = calculateCarRent(city_mpg, year);
+
+  console.log(generateCarImageUrl(car));
 
   return (
     <div className="car-card group">
@@ -35,7 +37,7 @@ const CarCard = ({ car }: CarCardProps) => {
 
       <div className="relative w-full h-40 my-3">
         <Image
-          src="/hero.png"
+          src={generateCarImageUrl(car)}
           alt="car model"
           fill
           priority
